@@ -1,1 +1,3 @@
-# dotfiles
+# Dotfiles
+
+My dotfile config
