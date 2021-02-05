@@ -55,11 +55,23 @@ set noerrorbells visualbell t_vb=
 " Enable mouse support,it can sometimes be convenient
 set mouse+=a
 
+" Use 4 spaces instead of tabs during formatting
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
 " Open new split panes to right
 set splitright
 
 " Open new split panes to bottom
 set splitbelow
+
+" Resize windows
+noremap <C-w>K :resize +10<CR>
+noremap <C-w>J :resize -10<CR>
+noremap <C-w>L :vertical:resize -10<CR>
+noremap <C-w>H :vertical:resize +10<CR>
 
 " Show command in bottom bar
 set showcmd
