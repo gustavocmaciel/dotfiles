@@ -12,6 +12,24 @@ let g:ctrlp_cmd = 'CtrlP'
 " nerdtree
 nnoremap <C-n> :NERDTree<CR>
 
+" lightline
+set noshowmode
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'gitbranch' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'filetype', 'fileencoding'] ]
+      \ },
+      \ 'component_function': {
+      \    'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+"
+" gitgutter
+set updatetime=100
+
 " =============================================
 " Editor Settings
 " =============================================
@@ -30,6 +48,9 @@ set relativenumber
 
 " Always show the status line at the bottom
 set laststatus=2
+
+" Avoid ESC delay
+set timeoutlen=1000 ttimeoutlen=0
 
 " Make backspace behave more reasonably
 set backspace=indent,eol,start
@@ -66,6 +87,19 @@ set splitright
 
 " Open new split panes to bottom
 set splitbelow
+
+" Remap esc to kj and jk
+imap kj <Esc>
+imap jk <Esc>
+
+" Leader is space
+let mapleader="\<Space>"
+
+" Quick-save
+nmap <leader>w :w<CR>
+
+" Quick-exit
+nmap <leader>q :q<CR>
 
 " Resize windows
 noremap <C-w>K :resize +10<CR>
@@ -104,8 +138,8 @@ nnoremap <right> :bn<CR>
 
 " Try to prevent bad habits like using the arrow keys for movement.
 " Do this in normal mode...
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Left>  :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
 nnoremap <Down>  :echoe "Use j"<CR>
 " ...and in insert mode
