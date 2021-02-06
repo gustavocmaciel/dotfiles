@@ -73,6 +73,12 @@ noremap <C-w>J :resize -10<CR>
 noremap <C-w>L :vertical:resize -10<CR>
 noremap <C-w>H :vertical:resize +10<CR>
 
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " Show command in bottom bar
 set showcmd
 
