@@ -8,27 +8,37 @@ set nocompatible
 " ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_show_hidden=1
 
 " nerdtree
 nnoremap <C-n> :NERDTree<CR>
+let NERDTreeShowHidden=1
+let NERDTreeMapUpdir='..'
+let NERDTreeMapOpenSplit='h'
+let NERDTreeMapOpenVSplit='v'
 
 " lightline
 set noshowmode
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'gitbranch' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'filetype', 'fileencoding'] ]
+      \             [ 'readonly', 'filename', 'modified', 'gitstatus', 'gitbranch' ] ],
       \ },
       \ 'component_function': {
-      \    'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'FugitiveHead',
+      \   'gitstatus': 'GitStatus'
       \ },
       \ }
-"
+
 " gitgutter
 set updatetime=100
+set signcolumn=yes
+
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
 
 " =============================================
 " Editor Settings
@@ -128,6 +138,12 @@ set autoindent
 colorscheme gruvbox
 set background=dark
 
+" git gutter highlight
+highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
 " Jump to start and end of line using the home row keys
 map H ^
 map L $
@@ -135,6 +151,12 @@ map L $
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
+
+" Move lines
+nmap J :m +1<CR>==
+nmap K :m -2<CR>==
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
 
 " Try to prevent bad habits like using the arrow keys for movement.
 " Do this in normal mode...
