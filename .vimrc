@@ -140,9 +140,16 @@ set background=dark
 
 " git gutter highlight
 highlight clear SignColumn
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+let g:gitgutter_sign_modified = '~'
+"let g:gitgutter_sign_modified_removed = '~_'
+highlight GitGutterAdd    guifg=#009900 ctermfg=10
+"highlight GitGutterChange guifg=#bbbb00 ctermfg=10
+highlight GitGutterChange guifg=#bbbb00 ctermfg=11
+highlight GitGutterDelete guifg=#ff2222 ctermfg=9
+"highlight GitGutterChangeDelete ctermfg=11
+highlight diffAdded ctermfg=10
+highlight diffChanged ctermfg=11
+highlight diffRemoved ctermfg=9
 
 " Jump to start and end of line using the home row keys
 map H ^
