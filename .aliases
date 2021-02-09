@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# File navigation
+alias ..='cd ..'
+alias ~='cd ~'
+alias ds='cd Documents/src'
+alias l='ls -alh'
+alias sl='ls'
+
+# Override existing commands
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias df='df -h'
+alias cp='cp -i'
+
+# Git
+alias g='git'
+alias gc='git commit -m'
+alias gcam='git commit -am'
+alias gs='git status'
+alias ga='git add'
+alias gl='git log'
+alias gp='git push'
+
+# Misc
+alias v='vim'
+alias t='tmux'
+alias ta='tmux a'
+alias tl='tmux ls'
+alias ts='tmux new -s'
