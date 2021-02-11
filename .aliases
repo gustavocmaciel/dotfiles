@@ -3,6 +3,10 @@
 # File navigation
 alias ..='cd ..'
 alias ~='cd ~'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias ds='cd Documents/src'
 alias l='ls -alh'
 alias sl='ls'
