@@ -135,6 +135,8 @@ filetype plugin indent on
 set autoindent
 
 " Colorscheme
+"autocmd BufEnter * colorscheme gruvbox
+"autocmd BufEnter *.html colorscheme new-moon
 colorscheme gruvbox
 set background=dark
 
@@ -147,7 +149,7 @@ highlight GitGutterAdd    guifg=#009900 ctermfg=10
 highlight GitGutterChange guifg=#bbbb00 ctermfg=11
 highlight GitGutterDelete guifg=#ff2222 ctermfg=9
 "highlight GitGutterChangeDelete ctermfg=11
-highlight diffAdded ctermfg=10
+highlight diffAdded ctermfg=107
 highlight diffChanged ctermfg=11
 highlight diffRemoved ctermfg=9
 
