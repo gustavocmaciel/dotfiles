@@ -148,9 +148,9 @@ highlight GitGutterAdd    guifg=#009900 ctermfg=10
 "highlight GitGutterChange guifg=#bbbb00 ctermfg=10
 highlight GitGutterChange guifg=#bbbb00 ctermfg=11
 highlight GitGutterDelete guifg=#ff2222 ctermfg=9
-"highlight GitGutterChangeDelete ctermfg=11
+highlight GitGutterChangeDelete ctermfg=12
 highlight diffAdded ctermfg=107
-highlight diffChanged ctermfg=11
+"highlight diffChanged ctermfg=11
 highlight diffRemoved ctermfg=9
 
 " Jump to start and end of line using the home row keys
