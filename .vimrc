@@ -209,12 +209,10 @@ highlight clear SignColumn
 let g:gitgutter_sign_modified = '~'
 "let g:gitgutter_sign_modified_removed = '~_'
 highlight GitGutterAdd    guifg=#009900 ctermfg=10
-"highlight GitGutterChange guifg=#bbbb00 ctermfg=10
 highlight GitGutterChange guifg=#bbbb00 ctermfg=11
 highlight GitGutterDelete guifg=#ff2222 ctermfg=9
 highlight GitGutterChangeDelete ctermfg=12
 highlight diffAdded ctermfg=107
-"highlight diffChanged ctermfg=11
 highlight diffRemoved ctermfg=9
 
 " Jump to start and end of line using the home row keys
@@ -234,7 +232,7 @@ vmap K :m '<-2<CR>gv=gv
 " Move by line
 nnoremap j gj
 nnoremap k gk
-"
+
 " Try to prevent bad habits like using the arrow keys for movement.
 " Do this in normal mode...
 "nnoremap <Left>  :echoe "Use h"<CR>
