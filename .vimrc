@@ -199,19 +199,15 @@ filetype plugin indent on
 set autoindent
 
 " Colorscheme
-"autocmd BufEnter * colorscheme gruvbox
-"autocmd BufEnter *.html colorscheme new-moon
 colorscheme gruvbox
 set background=dark
 
 " git gutter highlight
 highlight clear SignColumn
-let g:gitgutter_sign_modified = '~'
-"let g:gitgutter_sign_modified_removed = '~_'
 highlight GitGutterAdd    guifg=#009900 ctermfg=10
 highlight GitGutterChange guifg=#bbbb00 ctermfg=11
 highlight GitGutterDelete guifg=#ff2222 ctermfg=9
-highlight GitGutterChangeDelete ctermfg=12
+highlight GitGutterChangeDelete ctermfg=107
 highlight diffAdded ctermfg=107
 highlight diffRemoved ctermfg=9
 
