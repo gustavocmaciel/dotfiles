@@ -1,6 +1,0 @@
-[user]
-	name = Gustavo C. Maciel
-	email = gustavocmaciel2@gmail.com
-[alias]
-	unstage = reset HEAD --
-	graph = log --all --graph --decorate --oneline
