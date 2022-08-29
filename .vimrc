@@ -20,6 +20,7 @@ let NERDTreeMapOpenVSplit='v'
 " lightline
 set noshowmode
 let g:lightline = {
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified', 'gitstatus', 'gitbranch' ] ],
@@ -199,7 +200,11 @@ filetype plugin indent on
 set autoindent
 
 " Colorscheme
-colorscheme gruvbox
+"colorscheme gruvbox
+"colorscheme atom-dark-256
+"colorscheme molokai
+colorscheme codedark
+
 set background=dark
 
 " git gutter highlight
