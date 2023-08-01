@@ -41,6 +41,11 @@ function! GitStatus()
 endfunction
 set statusline+=%{GitStatus()}
 
+" ale linters
+let g:ale_linters = {
+\   'rust': ['analyzer', 'cargo', 'rls'],
+\}
+
 " coc
 
 " TextEdit might fail if hidden is not set.
@@ -48,6 +53,12 @@ set hidden
 
 " Give more space for displaying messages.
 set cmdheight=2
+
+" Better completion
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -70,13 +81,8 @@ endfunction
 " Use <c-.> to trigger completion.
 inoremap <silent><expr> <c-.> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" :  "\<C-g>u\<CR>"
-else
-    imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" Use Enter to confirm completion
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -88,8 +94,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use n to show documentation in preview window.
+nnoremap <silent> n :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -194,6 +200,28 @@ set showcmd
 " Highlight current line
 " set cursorline
 
+" Enable colorcolumn
+set colorcolumn=80
+
+" Rust colorcolumn
+au FileType rust set colorcolumn=100
+
+" Make diff better
+set diffopt+=algorithm:patience
+set diffopt+=indent-heuristic
+
+" Switch ; to add ; at end of line
+nnoremap ; A;<esc>
+
+" Switch a with A
+nnoremap a A
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
+
+" Use F2 to toggle paste mode
+set pastetoggle=<F2>
+
 " Enable filetype detection
 filetype plugin indent on
 
@@ -201,8 +229,6 @@ set autoindent
 
 " Colorscheme
 "colorscheme gruvbox
-"colorscheme atom-dark-256
-"colorscheme molokai
 colorscheme codedark
 
 set background=dark
