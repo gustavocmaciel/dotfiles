@@ -31,10 +31,6 @@ let g:lightline = {
       \ },
       \ }
 
-" gitgutter
-set updatetime=100
-set signcolumn=yes
-
 function! GitStatus()
   let [a,m,r] = GitGutterGetHunkSummary()
   return printf('+%d ~%d -%d', a, m, r)
@@ -232,15 +228,6 @@ set autoindent
 colorscheme codedark
 
 set background=dark
-
-" git gutter highlight
-highlight clear SignColumn
-highlight GitGutterAdd    guifg=#009900 ctermfg=10
-highlight GitGutterChange guifg=#bbbb00 ctermfg=11
-highlight GitGutterDelete guifg=#ff2222 ctermfg=9
-highlight GitGutterChangeDelete ctermfg=107
-highlight diffAdded ctermfg=107
-highlight diffRemoved ctermfg=9
 
 " Jump to start and end of line using the home row keys
 map H ^
