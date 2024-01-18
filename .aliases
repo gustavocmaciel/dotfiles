@@ -1,14 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # File navigation
 alias ..='cd ..'
 alias ~='cd ~'
-alias ls='ls --color=auto'
+alias ls='ls -a --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias l='ls -alh'
 alias sl='ls'
+alias e='exa -lhag --git'
 
 # Override existing commands
 alias mv='mv -i'
@@ -17,19 +18,25 @@ alias df='df -h'
 alias cp='cp -i'
 
 # Git
-alias g='git'
 alias gc='git commit -m'
 alias gcam='git commit -am'
 alias gs='git status'
+alias gb='git branch'
 alias ga='git add'
 alias gl='git log'
 alias gp='git push'
+alias gg='git graph'
 
 # Misc
-alias v='vim'
-alias t='tmux'
-alias ta='tmux a'
-alias tl='tmux ls'
-alias ts='tmux new -s'
 alias python='python3'
 alias pip='pip3'
+alias nvf='nvim $(fzf)'
+
+# Combine fzf with rg and open file in neovim
+alias rgf="rg --color=always --line-number --no-heading --smart-case '${*:-}' |
+  fzf --ansi \
+      --color 'hl:-1:underline,hl+:-1:underline:reverse' \
+      --delimiter : \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'right,60%,border-bottom,+{2}+3/3,~3' \
+      --bind 'enter:become(nvim {1} +{2})'"

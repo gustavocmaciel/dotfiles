@@ -2,112 +2,6 @@
 set nocompatible
 
 " =============================================
-" Plugins
-" =============================================
-
-" ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_show_hidden=1
-
-" nerdtree
-nnoremap <C-n> :NERDTree<CR>
-let NERDTreeShowHidden=1
-let NERDTreeMapUpdir='..'
-let NERDTreeMapOpenSplit='h'
-let NERDTreeMapOpenVSplit='v'
-
-" lightline
-set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'gitstatus', 'gitbranch' ] ],
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \   'gitstatus': 'GitStatus'
-      \ },
-      \ }
-
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
-endfunction
-set statusline+=%{GitStatus()}
-
-" ale linters
-let g:ale_linters = {
-\   'rust': ['analyzer', 'cargo', 'rls'],
-\}
-
-" coc
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Better completion
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-.> to trigger completion.
-inoremap <silent><expr> <c-.> coc#refresh()
-
-" Use Enter to confirm completion
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use n to show documentation in preview window.
-nnoremap <silent> n :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-         execute 'h '.expand('<cword>')
-    else
-         call CocAction('doHover')
-    endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" =============================================
 " Editor Settings
 " =============================================
 
@@ -193,18 +87,13 @@ nnoremap <C-H> <C-W><C-H>
 " Show command in bottom bar
 set showcmd
 
-" Highlight current line
-" set cursorline
+set scrolloff=8
 
 " Enable colorcolumn
 set colorcolumn=80
 
 " Rust colorcolumn
 au FileType rust set colorcolumn=100
-
-" Make diff better
-set diffopt+=algorithm:patience
-set diffopt+=indent-heuristic
 
 " Switch ; to add ; at end of line
 nnoremap ; A;<esc>
@@ -222,10 +111,6 @@ set pastetoggle=<F2>
 filetype plugin indent on
 
 set autoindent
-
-" Colorscheme
-"colorscheme gruvbox
-colorscheme codedark
 
 set background=dark
 
